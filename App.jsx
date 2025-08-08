@@ -1,12 +1,11 @@
-import React, { Component } from 'react'
-import SignInScreen from './src/screens/SignInScreen'
-// import WelcomeScreen from './src/screens/WelcomeScreen'
-// import SignUpScreen from './src/screens/SignUpScreen'
+import React from 'react';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import SignUpScreen from './src/screens/SignUpScreen';
 
-export default class App extends Component {
-  render() {
-    return (
-      <SignInScreen/>
-    )
-  }
+export default function App() {
+  return (
+    <SafeAreaProvider>
+      <SignUpScreen />
+    </SafeAreaProvider>
+  );
 }

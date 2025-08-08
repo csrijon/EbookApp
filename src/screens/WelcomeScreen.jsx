@@ -1,9 +1,17 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const WelcomeScreen = () => {
+  const insets = useSafeAreaInsets(); 
+
   return (
-    <View style={styles.container}>
+    <SafeAreaView
+      style={[
+        styles.container,
+        { paddingTop: insets.top, paddingBottom: insets.bottom }
+      ]}
+    >
       {/* Logo and Title */}
       <View style={styles.logoContainer}>
         <Image source={require('../assets/Vector.png')} style={styles.logo} />
@@ -33,7 +41,7 @@ const WelcomeScreen = () => {
           />
         ))}
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -43,11 +51,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#23085A',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingVertical: 50,
   },
   logoContainer: {
     alignItems: 'center',
-    marginTop: 100,
+    marginTop: 80, // You can adjust this if you want less/more space after safe area
   },
   logo: {
     width: 80,
@@ -79,7 +86,7 @@ const styles = StyleSheet.create({
   },
   pagination: {
     flexDirection: 'row',
-    marginBottom: 30,
+    marginBottom: 10,
   },
   dot: {
     width: 8,
