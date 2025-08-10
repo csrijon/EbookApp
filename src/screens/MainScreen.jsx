@@ -1,6 +1,5 @@
-// MainScreen.jsx
-
 import React from 'react';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons';
 import {
   View,
   Text,
@@ -26,7 +25,6 @@ const booksFavourites = [
 
 // Functional Component
 const MainScreen = () => {
-  // Using the hook to get the top & bottom padding
   const insets = useSafeAreaInsets();
 
   return (
@@ -38,7 +36,9 @@ const MainScreen = () => {
         </TouchableOpacity>
         <Text style={styles.headerTitle}>ReadLink</Text>
         <TouchableOpacity>
-          <Image source={require('../assets/image 7 (2).png')} style={styles.profileIcon} /> {/* Profile image */}
+          <View style={styles.circles}>
+            
+          </View>
         </TouchableOpacity>
       </View>
 
@@ -49,7 +49,6 @@ const MainScreen = () => {
           {booksTrending.map((book) => (
             <View key={book.id} style={styles.bookCard}>
               <Image source={book.image} style={styles.bookImage} />
-              {/* You can also show title if needed */}
               {/* <Text>{book.title}</Text> */}
             </View>
           ))}
@@ -70,13 +69,29 @@ const MainScreen = () => {
             </View>
           ))}
         </ScrollView>
+
+        <View style={styles.topheafder} >
+          <Text style={styles.sectionTitle} >Top 10</Text>
+          <TouchableOpacity>
+            <Text style={styles.viewAll} >View All</Text>
+          </TouchableOpacity>
+        </View>
+
+        <ScrollView horizontal>
+          {booksTrending.map((book) => (
+            <View key={book.id} style={styles.bookCard} >
+              <Image source={book.image} style={styles.bookImage} />
+            </View>
+          ))}
+        </ScrollView>
+
       </ScrollView>
 
       {/* Bottom Navigation */}
       <View style={styles.bottomNav}>
-        <Text style={styles.navItem}>Home</Text>
-        <Text style={styles.navItem}>Explore</Text>
-        <Text style={styles.navItem}>Library</Text>
+        <TouchableOpacity><MaterialIcons name="house" color="#ffffff" size={24} /></TouchableOpacity>
+        <TouchableOpacity><MaterialIcons name="search" color="#ffffff" size={24} /></TouchableOpacity>
+        <TouchableOpacity><MaterialIcons name="bookmark-border" color="#ffffff" size={24} /></TouchableOpacity>
       </View>
     </View>
   );
@@ -84,18 +99,23 @@ const MainScreen = () => {
 
 export default MainScreen;
 
-// ✅ Stylesheet
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff', // Main background
+    backgroundColor: '#fff',
   },
   scroll: {
-    paddingHorizontal: 16, // Padding on left/right
+    paddingHorizontal: 16,
+  },
+  circles: {
+    width: 40,
+    height: 40,
+    borderRadius: 50,
+    backgroundColor: '#ffffff',
   },
   header: {
     height: 60,
-    backgroundColor: '#4B2BAA', // Purple header
+    backgroundColor: '#4B2BAA',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -128,8 +148,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   bookImage: {
-    width: 100,
-    height: 150,
+    width: 154,
+    height: 205,
     resizeMode: 'cover',
     borderRadius: 10,
   },
@@ -137,6 +157,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+  },
+  topheafder: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center'
   },
   viewAll: {
     color: '#6A00FF',

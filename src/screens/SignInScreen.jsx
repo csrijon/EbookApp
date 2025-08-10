@@ -19,8 +19,8 @@ const SignInScreen = () => {
     insets.top && insets.top > 0
       ? insets.top
       : Platform.OS === 'android'
-      ? StatusBar.currentHeight || 24 // fallback
-      : 0;
+        ? StatusBar.currentHeight || 24 // fallback
+        : 0;
 
   return (
     <>

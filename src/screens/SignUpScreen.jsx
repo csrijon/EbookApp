@@ -4,7 +4,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const SignUpScreen = () => {
   const insets = useSafeAreaInsets();
-  console.log("SignUpScreen loaded"); // This will show in DevTools console, not terminal
+  console.log("SignUpScreen loaded"); 
 
   return (
     <View
@@ -30,9 +30,24 @@ const SignUpScreen = () => {
       <Text style={styles.signinText}>or Sign In with</Text>
 
       <View style={styles.socialContainer}>
-        <Image source={require('../assets/Apple_logo.png')} style={styles.socialIcon} />
-        <Image source={require('../assets/f.png')} style={styles.socialIcon} />
-        <Image source={require('../assets/Google_logo.png')} style={styles.socialIcon} />
+        <View style={styles.iconWrapper}>
+          <Image
+            source={require('../assets/Google_logo.png')}
+            style={styles.socialIcon}
+          />
+        </View>
+        <View style={styles.iconWrapper}>
+          <Image
+            source={require('../assets/f.png')}
+            style={styles.socialIcon}
+          />
+        </View>
+        <View style={styles.iconWrapper}>
+          <Image
+            source={require('../assets/Apple_logo.png')}
+            style={styles.socialIcon}
+          />
+        </View>
       </View>
     </View>
   );
@@ -83,16 +98,20 @@ const styles = StyleSheet.create({
   },
   socialContainer: {
     flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginHorizontal: 30,
+  },
+  iconWrapper: {
+    width: 50,
+    height: 50,
+    backgroundColor: '#fff',
+    borderRadius: 25,
+    alignItems: 'center',
     justifyContent: 'center',
-    gap: 15,
   },
   socialIcon: {
-    width: 40,
-    height: 40,
-    alignItems: 'center',
-    borderRadius: 20,
-    marginHorizontal: 10,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
-  },
+    width: 24,
+    height: 24,
+    resizeMode: 'contain',
+  }
 });

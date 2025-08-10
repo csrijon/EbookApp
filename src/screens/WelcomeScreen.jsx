@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   },
   logoContainer: {
     alignItems: 'center',
-    marginTop: 80, // You can adjust this if you want less/more space after safe area
+    marginTop: 80, 
   },
   logo: {
     width: 80,
